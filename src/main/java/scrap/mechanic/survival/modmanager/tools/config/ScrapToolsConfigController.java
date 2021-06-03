@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public class ScrapToolsConfigController {
 
     Logger logger = Logger.getLogger(ScrapToolsConfigController.class.getName());
+    
     private ScrapToolsConfig config = new ScrapToolsConfig();
 
 
