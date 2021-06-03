@@ -1,9 +1,10 @@
 # scrap-mechanic-survival-modmanager
 
 
-(!not yet working! !not yet finished! !man at work!)
+ #    !not yet working!     !not yet finished!        !man at work!
 
-Modmanager, Modinstaller, merging of mods and maybe more
+
+# Modmanager, Modinstaller, merging of mods and maybe more
 
 
 Everyone can feel free to copy and use my code for whatever you want. But if, it would be nice of you to mentioned this in your projectdescriptions.
