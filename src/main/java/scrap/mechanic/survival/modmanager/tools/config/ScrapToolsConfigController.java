@@ -51,7 +51,12 @@ public class ScrapToolsConfigController {
     
    public boolean isConfigured(){
      if(config != null){
-       return config.getPathToScrapToolFolder() != null && !config.getPathToScrapToolFolder().trim().isEmpty() && config.getPathToScrapmechanic()!= null && !config.getPathToScrapmechanic().trim().isEmpty();
+       return config.getPathToScrapToolFolder() != null && 
+               !config.getPathToScrapToolFolder().trim().isEmpty() && 
+               config.getPathToScrapmechanic()!= null && 
+               !config.getPathToScrapmechanic().trim().isEmpty() &&
+               !config.getPathToScrapToolFolder().equals("unknown") &&
+               !config.getPathToScrapmechanic().equals("unknown");
      }
      return false;
    }
