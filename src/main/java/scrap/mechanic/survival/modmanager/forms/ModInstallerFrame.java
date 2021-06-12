@@ -38,8 +38,8 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     initComponents();
     try {
       this.setResizable(false);
-      jImagePanel_settings.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg_beta2.jpg")));
-      jImagePanel_modinstaller.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg_beta2.jpg")));
+      jImagePanel_settings.setBackgroundImage(ImageIO.read(new File("./src/main/resources/titel.png")));
+      jImagePanel_modinstaller.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg.png")));
       configController = new ScrapToolsConfigController();      
       jlabel_pathtoscrapfolder.setText(configController.getConfig().getPathToScrapmechanic());
       jLabel_pathtomodmanager.setText(configController.getConfig().getPathToScrapToolFolder());
@@ -48,11 +48,10 @@ public class ModInstallerFrame extends javax.swing.JFrame {
       jScrollPane2.setOpaque(false);
       jScrollPane1.getViewport().setOpaque(false);
       jScrollPane2.getViewport().setOpaque(false);
-      jList_KnownMods.setBackground(new Color(jList_KnownMods.getBackground().getRed(), jList_KnownMods.getBackground().getGreen(), jList_KnownMods.getBackground().getBlue(), 85));
-      jList_KnownMods.addListSelectionListener((ListSelectionEvent e) -> { mainpanel.updateUI();});
-      jList_InstalledMods.setBackground(new Color(jList_KnownMods.getBackground().getRed(), jList_KnownMods.getBackground().getGreen(), jList_KnownMods.getBackground().getBlue(), 85));
-      jList_InstalledMods.addListSelectionListener((ListSelectionEvent e) -> { mainpanel.updateUI();});
-      hideLog();
+      jList_known_Mods.setBackground(new Color(jList_known_Mods.getBackground().getRed(), jList_known_Mods.getBackground().getGreen(), jList_known_Mods.getBackground().getBlue(), 85));
+      jList_known_Mods.addListSelectionListener((ListSelectionEvent e) -> { mainpanel.updateUI();});
+      jList_installed_Mods.setBackground(new Color(jList_installed_Mods.getBackground().getRed(), jList_installed_Mods.getBackground().getGreen(), jList_installed_Mods.getBackground().getBlue(), 85));
+      jList_installed_Mods.addListSelectionListener((ListSelectionEvent e) -> { mainpanel.updateUI();});
       updateView();
     } catch (IOException ignore) {
       LOGGER.warn(null, ignore);
@@ -65,7 +64,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
       if (logfile.exists()) {
         try {
           FileReader reader = new FileReader(logfile);
-          jTextArea_logarea.read(reader, null);
+//          jTextArea_logarea.read(reader, null);
         } catch (IOException ioe) {
           LOGGER.warn("Can´t read logfile");
         }
@@ -76,9 +75,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
   }
   
   private void showLog(){
-    this.setSize(this.getSize().width, 768);
-    jTextArea_logarea.setVisible(true);
-    jSeparator_logarea.setVisible(true);
+//    jTextArea_logarea.setVisible(true);
     if(timer != null){
       timer.start();
     }else{
@@ -87,9 +84,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
   }
   
   private void hideLog(){
-    jTextArea_logarea.setVisible(false);
-    jSeparator_logarea.setVisible(false);
-    this.setSize(this.getSize().width, 600);
+//    jTextArea_logarea.setVisible(false);
     if(timer != null){
       timer.stop();
     }
@@ -110,26 +105,15 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jLabel_pathtomodmanager = new javax.swing.JLabel();
     jImagePanel_modinstaller = new scrap.mechanic.survival.modmanager.forms.JImagePanel();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jList_KnownMods = new javax.swing.JList<>();
+    jList_known_Mods = new javax.swing.JList<>();
     jScrollPane2 = new javax.swing.JScrollPane();
-    jList_InstalledMods = new javax.swing.JList<>();
-    jLabel_label_knownmods = new javax.swing.JLabel();
-    jLabel_label_installedmods = new javax.swing.JLabel();
-    jSeparator_logarea = new javax.swing.JSeparator();
-    jButton_addKnownMod = new javax.swing.JButton();
-    jButton_subKnownMod = new javax.swing.JButton();
-    jButton_mergeKnownMods = new javax.swing.JButton();
-    jButton_installknownmod = new javax.swing.JButton();
-    jButton_uninstallmod = new javax.swing.JButton();
-    jScrollPane3 = new javax.swing.JScrollPane();
-    jTextArea_logarea = new javax.swing.JTextArea();
-    jButton1 = new javax.swing.JButton();
+    jList_installed_Mods = new javax.swing.JList<>();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     mainpanel.setSize(new java.awt.Dimension(1024, 768));
 
-    jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+    jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(0, 0, 0));
     jLabel1.setText("Path to \"Scrap Mechanic\" game folder:");
 
@@ -141,11 +125,11 @@ public class ModInstallerFrame extends javax.swing.JFrame {
       }
     });
 
-    jlabel_pathtoscrapfolder.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+    jlabel_pathtoscrapfolder.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
     jlabel_pathtoscrapfolder.setForeground(new java.awt.Color(0, 0, 0));
     jlabel_pathtoscrapfolder.setText("jLabel2");
 
-    jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+    jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(0, 0, 0));
     jLabel3.setText("Path to Mod-Manager data folder:");
 
@@ -158,7 +142,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
       }
     });
 
-    jLabel_pathtomodmanager.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+    jLabel_pathtomodmanager.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
     jLabel_pathtomodmanager.setForeground(new java.awt.Color(0, 0, 0));
     jLabel_pathtomodmanager.setText("jLabel4");
 
@@ -167,167 +151,78 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_settingsLayout.setHorizontalGroup(
       jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-            .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+        .addContainerGap(687, Short.MAX_VALUE)
+        .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
           .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
             .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jlabel_pathtoscrapfolder, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(jLabel1))
+            .addGap(318, 318, 318))
+          .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
+            .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(jButton_ofd_pathtoscrapmechanic, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_ofd_pathtoscrapmechanic, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jlabel_pathtoscrapfolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
               .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-                .addComponent(jLabel3)
+                .addComponent(jButton_ofd_pathtomodscrap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_ofd_pathtomodscrap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(21, 764, Short.MAX_VALUE))))
+                .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addContainerGap())))
     );
     jImagePanel_settingsLayout.setVerticalGroup(
       jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jButton_ofd_pathtoscrapmechanic))
+        .addGap(135, 135, 135)
+        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jlabel_pathtoscrapfolder, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(27, 27, 27)
         .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jButton_ofd_pathtomodscrap))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(642, Short.MAX_VALUE))
+          .addComponent(jlabel_pathtoscrapfolder, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jButton_ofd_pathtoscrapmechanic))
+        .addGap(42, 42, 42)
+        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jButton_ofd_pathtomodscrap)
+          .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(519, Short.MAX_VALUE))
     );
 
     jTabbedPane.addTab("settings", jImagePanel_settings);
 
-    jList_KnownMods.setModel(new javax.swing.AbstractListModel<String>() {
+    jList_known_Mods.setModel(new javax.swing.AbstractListModel<String>() {
       String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
       public int getSize() { return strings.length; }
       public String getElementAt(int i) { return strings[i]; }
     });
-    jScrollPane1.setViewportView(jList_KnownMods);
+    jScrollPane1.setViewportView(jList_known_Mods);
 
-    jList_InstalledMods.setModel(new javax.swing.AbstractListModel<String>() {
+    jList_installed_Mods.setModel(new javax.swing.AbstractListModel<String>() {
       String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
       public int getSize() { return strings.length; }
       public String getElementAt(int i) { return strings[i]; }
     });
-    jScrollPane2.setViewportView(jList_InstalledMods);
-
-    jLabel_label_knownmods.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    jLabel_label_knownmods.setText("Known mods");
-
-    jLabel_label_installedmods.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    jLabel_label_installedmods.setText("installed mods");
-
-    jButton_addKnownMod.setText("add");
-    jButton_addKnownMod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    jButton_addKnownMod.setPreferredSize(new java.awt.Dimension(28, 24));
-    jButton_addKnownMod.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton_addKnownModActionPerformed(evt);
-      }
-    });
-
-    jButton_subKnownMod.setText("remove");
-    jButton_subKnownMod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    jButton_subKnownMod.setPreferredSize(new java.awt.Dimension(28, 24));
-
-    jButton_mergeKnownMods.setText("merge");
-    jButton_mergeKnownMods.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    jButton_mergeKnownMods.setPreferredSize(new java.awt.Dimension(80, 24));
-
-    jButton_installknownmod.setText(">>");
-    jButton_installknownmod.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton_installknownmodActionPerformed(evt);
-      }
-    });
-
-    jButton_uninstallmod.setText("<<");
-    jButton_uninstallmod.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton_uninstallmodActionPerformed(evt);
-      }
-    });
-
-    jTextArea_logarea.setColumns(20);
-    jTextArea_logarea.setRows(5);
-    jScrollPane3.setViewportView(jTextArea_logarea);
-
-    jButton1.setText("show/hide log");
+    jScrollPane2.setViewportView(jList_installed_Mods);
 
     javax.swing.GroupLayout jImagePanel_modinstallerLayout = new javax.swing.GroupLayout(jImagePanel_modinstaller);
     jImagePanel_modinstaller.setLayout(jImagePanel_modinstallerLayout);
     jImagePanel_modinstallerLayout.setHorizontalGroup(
       jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jSeparator_logarea)
       .addGroup(jImagePanel_modinstallerLayout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jScrollPane3)
-          .addGroup(jImagePanel_modinstallerLayout.createSequentialGroup()
-            .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-              .addComponent(jLabel_label_knownmods, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-              .addComponent(jScrollPane1)
-              .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jImagePanel_modinstallerLayout.createSequentialGroup()
-                .addComponent(jButton_subKnownMod, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton_addKnownMod, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton_mergeKnownMods, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addGroup(jImagePanel_modinstallerLayout.createSequentialGroup()
-                .addComponent(jButton_installknownmod)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 583, Short.MAX_VALUE)
-                .addComponent(jButton_uninstallmod)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                  .addComponent(jScrollPane2)
-                  .addComponent(jLabel_label_installedmods, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)))
-              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jImagePanel_modinstallerLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)))))
-        .addContainerGap())
+        .addGap(178, 178, 178)
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(172, 172, 172))
     );
     jImagePanel_modinstallerLayout.setVerticalGroup(
       jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jImagePanel_modinstallerLayout.createSequentialGroup()
-        .addGap(15, 15, 15)
-        .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel_label_knownmods)
-          .addComponent(jLabel_label_installedmods))
+        .addGap(83, 83, 83)
         .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jImagePanel_modinstallerLayout.createSequentialGroup()
-            .addGap(147, 147, 147)
-            .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(jButton_installknownmod)
-              .addComponent(jButton_uninstallmod))
-            .addGap(192, 192, 192))
-          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jImagePanel_modinstallerLayout.createSequentialGroup()
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-              .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-              .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-        .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jImagePanel_modinstallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-            .addComponent(jButton_subKnownMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton_addKnownMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton_mergeKnownMods, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addComponent(jButton1))
-        .addGap(153, 153, 153)
-        .addComponent(jSeparator_logarea, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-        .addContainerGap())
+          .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(298, Short.MAX_VALUE))
     );
 
     jTabbedPane.addTab("survival mod installer", jImagePanel_modinstaller);
@@ -336,7 +231,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     mainpanel.setLayout(mainpanelLayout);
     mainpanelLayout.setHorizontalGroup(
       mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1281, Short.MAX_VALUE)
+      .addComponent(jTabbedPane)
     );
     mainpanelLayout.setVerticalGroup(
       mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,18 +267,6 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jLabel_pathtomodmanager.setText(configController.getConfig().getPathToScrapToolFolder());
     updateView();
   }//GEN-LAST:event_jButton_ofd_pathtomodscrapActionPerformed
-
-  private void jButton_addKnownModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addKnownModActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_jButton_addKnownModActionPerformed
-
-  private void jButton_uninstallmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_uninstallmodActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_jButton_uninstallmodActionPerformed
-
-  private void jButton_installknownmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_installknownmodActionPerformed
-    LOGGER.warn("Blahhhh");
-  }//GEN-LAST:event_jButton_installknownmodActionPerformed
 
   public static void main(String args[]) {
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -469,29 +352,18 @@ public class ModInstallerFrame extends javax.swing.JFrame {
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
-  private javax.swing.JButton jButton_addKnownMod;
-  private javax.swing.JButton jButton_installknownmod;
-  private javax.swing.JButton jButton_mergeKnownMods;
   private javax.swing.JButton jButton_ofd_pathtomodscrap;
   private javax.swing.JButton jButton_ofd_pathtoscrapmechanic;
-  private javax.swing.JButton jButton_subKnownMod;
-  private javax.swing.JButton jButton_uninstallmod;
   private scrap.mechanic.survival.modmanager.forms.JImagePanel jImagePanel_modinstaller;
   private scrap.mechanic.survival.modmanager.forms.JImagePanel jImagePanel_settings;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel3;
-  private javax.swing.JLabel jLabel_label_installedmods;
-  private javax.swing.JLabel jLabel_label_knownmods;
   private javax.swing.JLabel jLabel_pathtomodmanager;
-  private javax.swing.JList<String> jList_InstalledMods;
-  private javax.swing.JList<String> jList_KnownMods;
+  private javax.swing.JList<String> jList_installed_Mods;
+  private javax.swing.JList<String> jList_known_Mods;
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JScrollPane jScrollPane2;
-  private javax.swing.JScrollPane jScrollPane3;
-  private javax.swing.JSeparator jSeparator_logarea;
   private javax.swing.JTabbedPane jTabbedPane;
-  private javax.swing.JTextArea jTextArea_logarea;
   private javax.swing.JLabel jlabel_pathtoscrapfolder;
   private scrap.mechanic.survival.modmanager.forms.JImagePanel mainpanel;
   // End of variables declaration//GEN-END:variables
