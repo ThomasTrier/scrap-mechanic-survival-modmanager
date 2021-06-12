@@ -1,6 +1,5 @@
 package scrap.mechanic.survival.modmanager.tools.config;
 
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import scrap.mechanic.survival.modmanager.tools.modinstaller.entity.Mod;
@@ -9,11 +8,9 @@ public class ScrapToolsConfig {
   
     private List<Mod> mods = new ArrayList<>();    
     private String pathToScrapmechanic = "unknown";
-    private String pathToScrapToolFolder;
+    private String pathToScrapToolFolder = "unknown";
     
     public ScrapToolsConfig(){
-      pathToScrapToolFolder = Paths.get("").toAbsolutePath().toString();
-      System.err.println(pathToScrapToolFolder);
     }
     
 

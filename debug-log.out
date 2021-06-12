@@ -1,0 +1,13 @@
+2021-06-12 17:31:54 INFO  - Logger initialized.
+2021-06-12 17:32:00 INFO  - "Survival Radar" installed.
+2021-06-12 17:32:10 INFO  - Mod "Survival Radar" uninstalled
+2021-06-12 17:32:13 INFO  - File "SurvivalHudGui.layout" restored.
+2021-06-12 17:32:13 INFO  - File "cell.png" restored.
+2021-06-12 17:32:13 INFO  - File "comp.png" restored.
+2021-06-12 17:32:13 INFO  - File "dist.png" restored.
+2021-06-12 17:32:13 INFO  - File "pos.png" restored.
+2021-06-12 17:32:13 INFO  - File "description.json" restored.
+2021-06-12 17:32:13 INFO  - File "preview.jpg" restored.
+2021-06-12 17:32:13 INFO  - File "SurvivalGame.lua" restored.
+2021-06-12 17:32:13 INFO  - File "SurvivalPlayer.lua" restored.
+2021-06-12 17:32:13 INFO  - Backuped files restored
