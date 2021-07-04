@@ -144,6 +144,7 @@ public class SurvivalModManagementController extends Controller {
   }
 
   public boolean updateBackup(Mod mod) {
+    LOGGER.info("backup original gamefiles");
     try {
       File backupFolder = new File(configController.getPathToBackupfolder());
       if (!backupFolder.exists()) {
@@ -157,6 +158,7 @@ public class SurvivalModManagementController extends Controller {
           if (src.exists()) {
             Files.createDirectories(trg.getParentFile().toPath());
             Files.copy(src.toPath(), trg.toPath());
+             LOGGER.info("backup file: " + src.toPath());
           }
         }
       }
@@ -211,6 +213,7 @@ public class SurvivalModManagementController extends Controller {
   }
 
   private boolean copyModFiles(Mod mod) {
+    LOGGER.info("copy files for " + mod.getName());
     try {
       for (String filePath : mod.getFilePaths()) {
         File src = new File(mod.getSourcePath() + filePath);
@@ -220,6 +223,7 @@ public class SurvivalModManagementController extends Controller {
           trgDir.mkdirs();
         }
         Files.copy(src.toPath(), trg.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        LOGGER.info("copy file: " + src.toPath());
       }
     } catch (IOException e) {
       LOGGER.error(null, e);
