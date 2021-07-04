@@ -2,24 +2,20 @@
     "mods": [
         {
             "installed": false,
-            "name": "Stacks+ (Survival)",
-            "id": "02300fd7-1458-4ffe-ba1c-ea08c5a27099",
+            "name": "Survival Radar",
+            "id": "bbb5d9b1-84d8-4067-bb0c-0f266efb78fe",
             "filePaths": [
-                "\\Data\\Objects\\Database\\ShapeSets\\blocks.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\ammo.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\blocks.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\component.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\consumable.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\fuel.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\fuelcontainers.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\interactive.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\interactivecontainers.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\outfitpackage.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\plantables.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\resources.json",
-                "\\Survival\\Objects\\Database\\ShapeSets\\vacumpipe.json"
+                "\\Data\\Gui\\Layouts\\SurvivalHudGui.layout",
+                "\\Data\\Gui\\RadarAssets\\cell.png",
+                "\\Data\\Gui\\RadarAssets\\comp.png",
+                "\\Data\\Gui\\RadarAssets\\dist.png",
+                "\\Data\\Gui\\RadarAssets\\pos.png",
+                "\\description.json",
+                "\\preview.jpg",
+                "\\Survival\\Scripts\\game\\SurvivalGame.lua",
+                "\\Survival\\Scripts\\game\\SurvivalPlayer.lua"
             ],
-            "sourcePath": "D:\\Steam\\steamapps\\workshop\\content\\387990\\2111749421\\MAIN\\Scrap Mechanic"
+            "sourcePath": "D:\\Steam\\steamapps\\workshop\\content\\387990\\2128739946"
         },
         {
             "installed": false,
@@ -342,20 +338,24 @@
         },
         {
             "installed": false,
-            "name": "Survival Radar",
-            "id": "bbb5d9b1-84d8-4067-bb0c-0f266efb78fe",
+            "name": "Stacks+ (Survival)",
+            "id": "02300fd7-1458-4ffe-ba1c-ea08c5a27099",
             "filePaths": [
-                "\\Data\\Gui\\Layouts\\SurvivalHudGui.layout",
-                "\\Data\\Gui\\RadarAssets\\cell.png",
-                "\\Data\\Gui\\RadarAssets\\comp.png",
-                "\\Data\\Gui\\RadarAssets\\dist.png",
-                "\\Data\\Gui\\RadarAssets\\pos.png",
-                "\\description.json",
-                "\\preview.jpg",
-                "\\Survival\\Scripts\\game\\SurvivalGame.lua",
-                "\\Survival\\Scripts\\game\\SurvivalPlayer.lua"
+                "\\Data\\Objects\\Database\\ShapeSets\\blocks.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\ammo.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\blocks.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\component.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\consumable.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\fuel.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\fuelcontainers.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\interactive.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\interactivecontainers.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\outfitpackage.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\plantables.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\resources.json",
+                "\\Survival\\Objects\\Database\\ShapeSets\\vacumpipe.json"
             ],
-            "sourcePath": "D:\\Steam\\steamapps\\workshop\\content\\387990\\2128739946"
+            "sourcePath": "D:\\Steam\\steamapps\\workshop\\content\\387990\\2111749421\\MAIN\\Scrap Mechanic"
         }
     ],
     "pathToScrapmechanic": "F:\\Scrapmechanics Modmanager Spielwiese\\Scrap Mechanic",
