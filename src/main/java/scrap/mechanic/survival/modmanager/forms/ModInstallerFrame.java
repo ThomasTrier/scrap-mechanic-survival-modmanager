@@ -225,7 +225,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     });
     jScrollPane1.setViewportView(jList_known_Mods);
 
-    jImagePanel_modinstaller.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 75, 310, 428));
+    jImagePanel_modinstaller.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 75, 310, 420));
 
     jList_installed_Mods.setFont(new java.awt.Font("Dialog", 3, 13)); // NOI18N
     jList_installed_Mods.setModel(new javax.swing.AbstractListModel<String>() {
@@ -235,7 +235,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     });
     jScrollPane2.setViewportView(jList_installed_Mods);
 
-    jImagePanel_modinstaller.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 75, 310, 428));
+    jImagePanel_modinstaller.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 75, 310, 420));
 
     jTextArea_Log.setColumns(20);
     jTextArea_Log.setRows(5);
@@ -244,6 +244,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_modinstaller.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 601, 1255, 196));
 
     jButton_install_known_mod.setText(">>>");
+    jButton_install_known_mod.setToolTipText("install selected mod");
     jButton_install_known_mod.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_install_known_modActionPerformed(evt);
@@ -252,6 +253,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_modinstaller.add(jButton_install_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 258, -1, -1));
 
     jButton_uninstall_mod.setText("<<<");
+    jButton_uninstall_mod.setToolTipText("uninstall mod");
     jButton_uninstall_mod.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_uninstall_modActionPerformed(evt);
@@ -264,34 +266,37 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_modinstaller.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 1255, -1));
 
     jButton_find_mods.setText("find mods");
+    jButton_find_mods.setToolTipText("adds new mods to known mods list");
     jButton_find_mods.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_find_modsActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_find_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
+    jImagePanel_modinstaller.add(jButton_find_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 510, 100, 25));
 
     jButton_remove_known_mod.setText("remove mods");
+    jButton_remove_known_mod.setToolTipText("remove selected from known mods");
     jButton_remove_known_mod.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_remove_known_modActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_remove_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 100, -1));
+    jImagePanel_modinstaller.add(jButton_remove_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 510, 100, 25));
 
-    jButton_combine_mods.setText("combine mods");
-    jImagePanel_modinstaller.add(jButton_combine_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
+    jButton_combine_mods.setText("combine");
+    jButton_combine_mods.setToolTipText("merges two or more mods to a new one");
+    jImagePanel_modinstaller.add(jButton_combine_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 510, 100, 25));
 
-    jButton_restore_gamefiles.setText("restore original gamefiles");
+    jButton_restore_gamefiles.setText("restore gamefiles");
     jButton_restore_gamefiles.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_restore_gamefilesActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_restore_gamefiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, -1, -1));
+    jImagePanel_modinstaller.add(jButton_restore_gamefiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 510, 153, 25));
 
     jButton7.setText("not yet needed");
-    jImagePanel_modinstaller.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 510, -1, -1));
+    jImagePanel_modinstaller.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 150, 25));
 
     jLabel2.setFont(new java.awt.Font("Ebrima", 3, 16)); // NOI18N
     jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

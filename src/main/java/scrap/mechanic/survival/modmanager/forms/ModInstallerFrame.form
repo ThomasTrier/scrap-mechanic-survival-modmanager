@@ -206,7 +206,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="175" y="75" width="310" height="428"/>
+                      <AbsoluteConstraints x="175" y="75" width="310" height="420"/>
                     </Constraint>
                   </Constraints>
 
@@ -239,7 +239,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="773" y="75" width="310" height="428"/>
+                      <AbsoluteConstraints x="773" y="75" width="310" height="420"/>
                     </Constraint>
                   </Constraints>
 
@@ -289,6 +289,7 @@
                 <Component class="javax.swing.JButton" name="jButton_install_known_mod">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&gt;&gt;&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="install selected mod"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_install_known_modActionPerformed"/>
@@ -302,6 +303,7 @@
                 <Component class="javax.swing.JButton" name="jButton_uninstall_mod">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&lt;&lt;&lt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="uninstall mod"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_uninstall_modActionPerformed"/>
@@ -331,49 +333,52 @@
                 <Component class="javax.swing.JButton" name="jButton_find_mods">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="find mods"/>
+                    <Property name="toolTipText" type="java.lang.String" value="adds new mods to known mods list"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_find_modsActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="180" y="510" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="175" y="510" width="100" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton_remove_known_mod">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="remove mods"/>
+                    <Property name="toolTipText" type="java.lang.String" value="remove selected from known mods"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_remove_known_modActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="510" width="100" height="-1"/>
+                      <AbsoluteConstraints x="278" y="510" width="100" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton_combine_mods">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="combine mods"/>
+                    <Property name="text" type="java.lang.String" value="combine"/>
+                    <Property name="toolTipText" type="java.lang.String" value="merges two or more mods to a new one"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="380" y="510" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="382" y="510" width="100" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton_restore_gamefiles">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="restore original gamefiles"/>
+                    <Property name="text" type="java.lang.String" value="restore gamefiles"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_restore_gamefilesActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="780" y="510" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="773" y="510" width="153" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -383,7 +388,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="970" y="510" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="930" y="510" width="150" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
