@@ -9,6 +9,7 @@ public class XMLToObject<T> {
     public XMLToObject(Class<T> t){
         type = t;
     }
+    
     public T getAsObject(String filepath){
         try {
             File file = new File(filepath);

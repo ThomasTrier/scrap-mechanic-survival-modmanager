@@ -65,7 +65,8 @@ public class SurvivalModManagementController extends Controller {
 
   }
 
-  public boolean findSurvivalModsAndAddToList(String sourcePath, String name) {
+  public List<Mod> findSurvivalMods(String sourcePath, String name) {
+    List<Mod> mods = new ArrayList<>();
     File file = new File(sourcePath);
     String descriptionname = name;
     if (file.isDirectory()) {
@@ -76,9 +77,7 @@ public class SurvivalModManagementController extends Controller {
       if (Arrays.asList(file.listFiles()).stream().anyMatch(f -> f.getAbsolutePath().toLowerCase().endsWith("\\survival") || f.getAbsolutePath().toLowerCase().contains("\\survival\\"))) {
         Mod newMod = new Mod(sourcePath, descriptionname);
         if (!installedMods.stream().anyMatch(m -> m.getName().equals(newMod.getName())) && !knownMods.stream().anyMatch(m -> m.getName().equals(newMod.getName()))) {
-          knownMods.add(newMod);
-          configController.getMods().add(newMod);
-          configController.update();
+          mods.add(newMod);
           LOGGER.info("Found: \"" + newMod.getName() + "\".");
         }
       } else {
@@ -88,12 +87,23 @@ public class SurvivalModManagementController extends Controller {
             if (descriptionname == null) {
               descriptionname = sourcePath.substring(sourcePath.lastIndexOf("\\")) + "_" + index++;
             }
-            findSurvivalModsAndAddToList(f.getAbsolutePath(), descriptionname);
+            mods.addAll(findSurvivalMods(f.getAbsolutePath(), descriptionname));
           }
         }
       }
     } else {
-      return false;
+      return new ArrayList<>();
+    }
+    
+    return mods;
+  }
+
+  public boolean addSurvivalModsToList(Mod newMod) {
+    if (!installedMods.stream().anyMatch(m -> m.getName().equals(newMod.getName())) && !knownMods.stream().anyMatch(m -> m.getName().equals(newMod.getName()))) {
+      knownMods.add(newMod);
+      configController.getMods().add(newMod);
+      configController.update();
+      LOGGER.info("Added to known mods: \"" + newMod.getName() + "\".");
     }
     return true;
   }
@@ -158,7 +168,7 @@ public class SurvivalModManagementController extends Controller {
           if (src.exists()) {
             Files.createDirectories(trg.getParentFile().toPath());
             Files.copy(src.toPath(), trg.toPath());
-             LOGGER.info("backup file: " + src.toPath());
+            LOGGER.info("backup file: " + src.toPath());
           }
         }
       }

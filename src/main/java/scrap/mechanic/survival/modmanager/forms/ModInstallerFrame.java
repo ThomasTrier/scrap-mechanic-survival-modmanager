@@ -2,11 +2,19 @@ package scrap.mechanic.survival.modmanager.forms;
 
 import com.jtattoo.plaf.hifi.HiFiLookAndFeel;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -16,6 +24,7 @@ import org.apache.log4j.PropertyConfigurator;
 import scrap.mechanic.survival.modmanager.tools.OpenFileDialog;
 import scrap.mechanic.survival.modmanager.tools.config.ScrapToolsConfigController;
 import scrap.mechanic.survival.modmanager.tools.modinstaller.SurvivalModManagementController;
+import scrap.mechanic.survival.modmanager.tools.modinstaller.entity.Mod;
 
 public class ModInstallerFrame extends javax.swing.JFrame {
 
@@ -123,7 +132,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jPanel1 = new javax.swing.JPanel();
     jButton_find_mods = new javax.swing.JButton();
     jButton_remove_known_mod = new javax.swing.JButton();
-    jButton_combine_mods = new javax.swing.JButton();
+    jButton_find_workshop_mods = new javax.swing.JButton();
     jButton_restore_gamefiles = new javax.swing.JButton();
     jButton7 = new javax.swing.JButton();
     jLabel2 = new javax.swing.JLabel();
@@ -266,7 +275,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_modinstaller.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 1255, -1));
 
     jButton_find_mods.setText("find mods");
-    jButton_find_mods.setToolTipText("adds new mods to known mods list");
+    jButton_find_mods.setToolTipText("adding new downloaded mod to known mod list");
     jButton_find_mods.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_find_modsActionPerformed(evt);
@@ -281,13 +290,14 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         jButton_remove_known_modActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_remove_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 510, 100, 25));
+    jImagePanel_modinstaller.add(jButton_remove_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 510, 100, 25));
 
-    jButton_combine_mods.setText("combine");
-    jButton_combine_mods.setToolTipText("merges two or more mods to a new one");
-    jImagePanel_modinstaller.add(jButton_combine_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 510, 100, 25));
+    jButton_find_workshop_mods.setText("find (steam)");
+    jButton_find_workshop_mods.setToolTipText("automated search of downloaded workshop mods");
+    jImagePanel_modinstaller.add(jButton_find_workshop_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 510, 100, 25));
 
     jButton_restore_gamefiles.setText("restore gamefiles");
+    jButton_restore_gamefiles.setToolTipText("restores original gamefiles from backupfolder");
     jButton_restore_gamefiles.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_restore_gamefilesActionPerformed(evt);
@@ -355,8 +365,8 @@ public class ModInstallerFrame extends javax.swing.JFrame {
 
   private void jButton_find_modsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_find_modsActionPerformed
     String path = new OpenFileDialog().openDirectoryDialog("select mod folder", null);
-    survivalModManagementController.findSurvivalModsAndAddToList(path, null);
-    updateView();
+    List<Mod> newMods = survivalModManagementController.findSurvivalMods(path, null);
+    showDialog(createfoundModsDialogPanel(newMods),newMods.size() + " mods found:");
   }//GEN-LAST:event_jButton_find_modsActionPerformed
 
   private void jButton_remove_known_modActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_remove_known_modActionPerformed
@@ -473,6 +483,73 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     mainpanel.updateUI();
     configController.update();
   }
+  
+  private JPanel createfoundModsDialogPanel(List<Mod> mods){
+    JPanel panel = new JPanel();
+    panel.setLayout(new GridBagLayout());
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.weightx = 0.5;
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    
+    Color c = Color.red;
+    for (Mod mod : mods) {
+      JLabel l1 = new JLabel("Name:    " +mod.getName());
+      JCheckBox l2 =new JCheckBox("install", true);
+      JLabel l3 = new JLabel("Path:    " +mod.getSourcePath());
+           
+      panel.add(l1,gbc);      
+      gbc.gridx = gbc.gridx + 1;
+      panel.add(l2,gbc);
+      
+      gbc.gridx = 0;
+      gbc.gridy = gbc.gridy + 1;
+      panel.add(l3,gbc);
+      gbc.gridy = gbc.gridy + 1;
+      
+    }
+    
+    JButton ok = new JButton("ok");
+    JButton abort = new JButton("abort");
+    gbc.gridx = 0;    
+    gbc.weightx = 1;
+    JPanel p = new JPanel();
+    p.add(abort);
+    p.add(ok);
+    panel.add(p,gbc);
+    return panel;
+  }
+  /*
+  for (Mod mod : mods) {
+      JPanel box = new JPanel();
+      box.setBackground(c);
+      c = Color.BLUE;
+      GroupLayout innerGl = new GroupLayout(box);  
+      innerGl.setAutoCreateGaps(true);  
+      innerGl.setAutoCreateContainerGaps(true);  
+      box.setLayout(innerGl);
+      JLabel l1 = new JLabel("Name: " +mod.getName());
+      JCheckBox l2 =new JCheckBox("install", true);
+      JLabel l3 = new JLabel("Path: " +mod.getSourcePath());
+      innerGl.setHorizontalGroup(innerGl.createSequentialGroup()  
+              .addGroup(innerGl.createParallelGroup(LEADING).addComponent(l1).addComponent(l3))  
+              .addGroup(innerGl.createParallelGroup(TRAILING).addComponent(l2)));  
+
+      innerGl.setVerticalGroup(innerGl.createSequentialGroup()  
+              .addGroup(innerGl.createParallelGroup(BASELINE).addComponent(l1).addComponent(l2))  
+              .addGroup(innerGl.createParallelGroup(BASELINE).addComponent(l3)));
+      panel.add(box,gbc);
+      gbc.gridy = gbc.gridy + 1;
+    }
+  */
+  
+  private void showDialog(JPanel panel, String titel){
+    JDialog dialog = new JDialog(this, titel, true);
+    dialog.getContentPane().add(panel);
+    dialog.pack();
+    dialog.setVisible(true);
+  }
 
   public VIEW getCurrentView() {
     return currentView;
@@ -485,8 +562,8 @@ public class ModInstallerFrame extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton7;
-  private javax.swing.JButton jButton_combine_mods;
   private javax.swing.JButton jButton_find_mods;
+  private javax.swing.JButton jButton_find_workshop_mods;
   private javax.swing.JButton jButton_install_known_mod;
   private javax.swing.JButton jButton_ofd_pathtomodscrap;
   private javax.swing.JButton jButton_ofd_pathtoscrapmechanic;
