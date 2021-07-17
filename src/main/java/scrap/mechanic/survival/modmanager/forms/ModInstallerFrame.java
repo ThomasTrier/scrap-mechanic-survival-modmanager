@@ -193,22 +193,21 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_settingsLayout.setHorizontalGroup(
       jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jImagePanel_settingsLayout.createSequentialGroup()
-        .addContainerGap(509, Short.MAX_VALUE)
+        .addContainerGap(490, Short.MAX_VALUE)
         .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
           .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
             .addComponent(jLabel1)
             .addGap(306, 306, 306))
-          .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-              .addComponent(jButton_ofd_pathtoscrapmechanic, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-              .addComponent(jlabel_pathtoscrapfolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-              .addComponent(jButton_ofd_pathtomodscrap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-              .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        .addGap(343, 343, 343))
+          .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
+            .addComponent(jButton_ofd_pathtoscrapmechanic, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jlabel_pathtoscrapfolder, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
+            .addComponent(jButton_ofd_pathtomodscrap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(362, 362, 362))
     );
     jImagePanel_settingsLayout.setVerticalGroup(
       jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +241,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     });
     jScrollPane1.setViewportView(jList_known_Mods);
 
-    jImagePanel_modinstaller.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 75, 310, 420));
+    jImagePanel_modinstaller.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 80, 310, 450));
 
     jList_installed_Mods.setFont(new java.awt.Font("Dialog", 3, 13)); // NOI18N
     jList_installed_Mods.setModel(new javax.swing.AbstractListModel<String>() {
@@ -252,13 +251,17 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     });
     jScrollPane2.setViewportView(jList_installed_Mods);
 
-    jImagePanel_modinstaller.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 75, 310, 420));
+    jImagePanel_modinstaller.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 80, 310, 450));
+
+    jScrollPane3.setMinimumSize(new java.awt.Dimension(1410, 196));
+    jScrollPane3.setPreferredSize(new java.awt.Dimension(1395, 196));
+    jScrollPane3.setRequestFocusEnabled(false);
 
     jTextArea_Log.setColumns(20);
     jTextArea_Log.setRows(5);
     jScrollPane3.setViewportView(jTextArea_Log);
 
-    jImagePanel_modinstaller.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 601, 1255, 196));
+    jImagePanel_modinstaller.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 601, -1, -1));
 
     jButton_install_known_mod.setText(">>>");
     jButton_install_known_mod.setToolTipText("install selected mod");
@@ -267,7 +270,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         jButton_install_known_modActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_install_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 258, -1, -1));
+    jImagePanel_modinstaller.add(jButton_install_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 52, 25));
 
     jButton_uninstall_mod.setText("<<<");
     jButton_uninstall_mod.setToolTipText("uninstall mod");
@@ -276,7 +279,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         jButton_uninstall_modActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_uninstall_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 258, -1, -1));
+    jImagePanel_modinstaller.add(jButton_uninstall_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 290, 52, 25));
 
     jPanel1.setBackground(new java.awt.Color(151, 151, 155));
     jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -289,7 +292,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         jButton_find_modsActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_find_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 510, 100, 25));
+    jImagePanel_modinstaller.add(jButton_find_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 90, 25));
 
     jButton_remove_known_mod.setText("remove mods");
     jButton_remove_known_mod.setToolTipText("remove selected from known mods");
@@ -298,11 +301,11 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         jButton_remove_known_modActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_remove_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 510, 100, 25));
+    jImagePanel_modinstaller.add(jButton_remove_known_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 100, 25));
 
     jButton_find_workshop_mods.setText("find (steam)");
     jButton_find_workshop_mods.setToolTipText("automated search of downloaded workshop mods");
-    jImagePanel_modinstaller.add(jButton_find_workshop_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 510, 100, 25));
+    jImagePanel_modinstaller.add(jButton_find_workshop_mods, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 540, 100, 25));
 
     jButton_restore_gamefiles.setText("restore gamefiles");
     jButton_restore_gamefiles.setToolTipText("restores original gamefiles from backupfolder");
@@ -311,10 +314,10 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         jButton_restore_gamefilesActionPerformed(evt);
       }
     });
-    jImagePanel_modinstaller.add(jButton_restore_gamefiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 510, 153, 25));
+    jImagePanel_modinstaller.add(jButton_restore_gamefiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 540, 153, 25));
 
     jButton7.setText("not yet needed");
-    jImagePanel_modinstaller.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 150, 25));
+    jImagePanel_modinstaller.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 540, 150, 25));
 
     jLabel2.setFont(new java.awt.Font("Ebrima", 3, 16)); // NOI18N
     jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -324,7 +327,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jLabel4.setFont(new java.awt.Font("Ebrima", 3, 16)); // NOI18N
     jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jLabel4.setText("installed mods");
-    jImagePanel_modinstaller.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 300, -1));
+    jImagePanel_modinstaller.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 50, 300, -1));
 
     jTabbedPane.addTab("survival mod installer", jImagePanel_modinstaller);
 
