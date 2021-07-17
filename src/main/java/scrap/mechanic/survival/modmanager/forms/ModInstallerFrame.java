@@ -49,8 +49,8 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     initComponents();
     try {
       this.setResizable(false);
-      jImagePanel_settings.setBackgroundImage(ImageIO.read(new File("./src/main/resources/titel.png")));
-      jImagePanel_modinstaller.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg.png")));
+      jImagePanel_settings.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg_title.png")));
+      jImagePanel_modinstaller.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg_installer.png")));
       
       configController = ScrapToolsConfigController.findInstance();
       survivalModManagementController = new SurvivalModManagementController();
@@ -139,14 +139,18 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jLabel4 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setPreferredSize(new java.awt.Dimension(1434, 876));
 
-    mainpanel.setSize(new java.awt.Dimension(1024, 768));
+    mainpanel.setPreferredSize(new java.awt.Dimension(1434, 807));
+    mainpanel.setSize(new java.awt.Dimension(1434, 807));
 
     jTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
       public void stateChanged(javax.swing.event.ChangeEvent evt) {
         jTabbedPaneStateChanged(evt);
       }
     });
+
+    jImagePanel_settings.setPreferredSize(new java.awt.Dimension(1434, 809));
 
     jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -335,11 +339,11 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1284, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(mainpanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(mainpanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
     );
 
     pack();
