@@ -49,8 +49,8 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     initComponents();
     try {
       this.setResizable(false);
-      jImagePanel_settings.setBackgroundImage(ImageIO.read(new File("./src/main/resources/titel.png")));
-      jImagePanel_modinstaller.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg.png")));
+      jImagePanel_settings.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg_title.png")));
+      jImagePanel_modinstaller.setBackgroundImage(ImageIO.read(new File("./src/main/resources/bg_installer.png")));
       
       configController = ScrapToolsConfigController.findInstance();
       survivalModManagementController = new SurvivalModManagementController();
@@ -139,14 +139,21 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jLabel4 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setPreferredSize(new java.awt.Dimension(1510, 900));
 
-    mainpanel.setSize(new java.awt.Dimension(1024, 768));
+    mainpanel.setMinimumSize(new java.awt.Dimension(1510, 900));
+    mainpanel.setSize(new java.awt.Dimension(1510, 927));
+    mainpanel.setVerifyInputWhenFocusTarget(false);
 
+    jTabbedPane.setMinimumSize(new java.awt.Dimension(1510, 900));
+    jTabbedPane.setPreferredSize(new java.awt.Dimension(1515, 900));
     jTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
       public void stateChanged(javax.swing.event.ChangeEvent evt) {
         jTabbedPaneStateChanged(evt);
       }
     });
+
+    jImagePanel_settings.setPreferredSize(new java.awt.Dimension(1505, 850));
 
     jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -186,7 +193,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_settingsLayout.setHorizontalGroup(
       jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-        .addContainerGap(690, Short.MAX_VALUE)
+        .addContainerGap(916, Short.MAX_VALUE)
         .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
           .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
             .addComponent(jLabel1)
@@ -219,11 +226,13 @@ public class ModInstallerFrame extends javax.swing.JFrame {
         .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jButton_ofd_pathtomodscrap)
           .addComponent(jLabel_pathtomodmanager, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(519, Short.MAX_VALUE))
+        .addContainerGap(583, Short.MAX_VALUE))
     );
 
     jTabbedPane.addTab("settings", jImagePanel_settings);
 
+    jImagePanel_modinstaller.setMinimumSize(new java.awt.Dimension(1510, 900));
+    jImagePanel_modinstaller.setPreferredSize(new java.awt.Dimension(1510, 900));
     jImagePanel_modinstaller.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jList_known_Mods.setFont(new java.awt.Font("Dialog", 3, 13)); // NOI18N
@@ -324,11 +333,11 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     mainpanel.setLayout(mainpanelLayout);
     mainpanelLayout.setHorizontalGroup(
       mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jTabbedPane)
+      .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1510, Short.MAX_VALUE)
     );
     mainpanelLayout.setVerticalGroup(
       mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jTabbedPane)
+      .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
