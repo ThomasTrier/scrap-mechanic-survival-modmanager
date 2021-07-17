@@ -2,22 +2,32 @@ package scrap.mechanic.survival.modmanager.forms;
 
 import com.jtattoo.plaf.hifi.HiFiLookAndFeel;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -495,68 +505,100 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     configController.update();
   }
   
+  public void addToKnownMods(Map<JCheckBox,Map<JTextField,Mod>> map){
+    System.err.println("addToKnownMods");
+    map.forEach((k,v) -> {
+      Map<JTextField,Mod> m = ((Map<JTextField,Mod>)v);
+      JTextField jtf = m.keySet().iterator().next();
+      Mod mod = m.values().iterator().next();
+      JCheckBox cb = (JCheckBox)k;
+      System.err.println(mod.getName() + "  " + jtf.getText() + "   " + cb.isSelected());
+    });
+  }
+  
   private JPanel createfoundModsDialogPanel(List<Mod> mods){
-    JPanel panel = new JPanel();
-    panel.setLayout(new GridBagLayout());
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.weightx = 0.5;
-    gbc.gridx = 0;
-    gbc.gridy = 0;
+    JPanel mpanel = new JPanel();
+    mpanel.setLayout(new BoxLayout(mpanel, BoxLayout.PAGE_AXIS));
     
-    Color c = Color.red;
+    Font f1 = new Font("SansSerif", Font.BOLD, 15);
+    Map<JCheckBox,Map<JTextField,Mod>> map = new HashMap<>();  
+    
     for (Mod mod : mods) {
-      JLabel l1 = new JLabel("Name:    " +mod.getName());
-      JCheckBox l2 =new JCheckBox("install", true);
-      JLabel l3 = new JLabel("Path:    " +mod.getSourcePath());
-           
-      panel.add(l1,gbc);      
-      gbc.gridx = gbc.gridx + 1;
-      panel.add(l2,gbc);
+      JPanel panel = new JPanel();
+      panel.setLayout(new GridBagLayout());
+      panel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));      
+      GridBagConstraints gbc = new GridBagConstraints();
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+      gbc.weightx = 0.5;
+      gbc.gridx = 0;
+      gbc.gridy = 0;
       
+      JLabel l1 = new JLabel("Name:");
+      l1.setFont(f1);
+      JTextField jtf = new JTextField(mod.getName());
+      jtf.setFont(f1);
+      JPanel fp1 = new JPanel();
+      fp1.setLayout(new FlowLayout(FlowLayout.LEADING));
+      fp1.add(l1);
+      fp1.add(jtf);
+      
+      JCheckBox l2 =new JCheckBox("install", true);
+      Map<JTextField,Mod> m = new HashMap<>();
+      m.put(jtf, mod);
+      map.put(l2, m);
+      l2.setFont(f1);
+      JPanel fp2 = new JPanel();
+      fp2.setLayout(new FlowLayout(FlowLayout.RIGHT));
+      fp2.add(l2);
+      
+      JLabel l3 = new JLabel("Path:    " +mod.getSourcePath());
+      l3.setFont(f1);
+      JPanel fp3 = new JPanel();
+      fp3.setLayout(new FlowLayout(FlowLayout.LEFT));
+      fp3.add(l3);
+      
+      panel.add(fp1,gbc);     
+      gbc.gridx = gbc.gridx + 1;
+      panel.add(fp2,gbc);      
       gbc.gridx = 0;
       gbc.gridy = gbc.gridy + 1;
-      panel.add(l3,gbc);
+      panel.add(fp3,gbc);
+      
       gbc.gridy = gbc.gridy + 1;
       
+      JPanel sep = new JPanel();
+      sep.setSize(mpanel.getWidth(), 15);
+      sep.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+      mpanel.add(sep);
+      mpanel.add(panel);
     }
     
-    JButton ok = new JButton("ok");
-    JButton abort = new JButton("abort");
-    gbc.gridx = 0;    
-    gbc.weightx = 1;
+    
+    JPanel sep = new JPanel();
+    sep.setSize(mpanel.getWidth(), 20);
+    sep.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+    mpanel.add(sep);
+//    
+    JButton ok = new JButton("accept");
+    ok.setFont(f1);
+    ok.setMargin(new Insets(5, 20, 5, 20));
+    ok.setSize(100,25);
+    ok.addActionListener((ActionEvent arg0) -> {
+      this.addToKnownMods(map);
+    });
+    
     JPanel p = new JPanel();
-    p.add(abort);
+    p.setLayout(new FlowLayout(FlowLayout.CENTER));
     p.add(ok);
-    panel.add(p,gbc);
-    return panel;
+    mpanel.add(p);
+    
+    return mpanel;
   }
-  /*
-  for (Mod mod : mods) {
-      JPanel box = new JPanel();
-      box.setBackground(c);
-      c = Color.BLUE;
-      GroupLayout innerGl = new GroupLayout(box);  
-      innerGl.setAutoCreateGaps(true);  
-      innerGl.setAutoCreateContainerGaps(true);  
-      box.setLayout(innerGl);
-      JLabel l1 = new JLabel("Name: " +mod.getName());
-      JCheckBox l2 =new JCheckBox("install", true);
-      JLabel l3 = new JLabel("Path: " +mod.getSourcePath());
-      innerGl.setHorizontalGroup(innerGl.createSequentialGroup()  
-              .addGroup(innerGl.createParallelGroup(LEADING).addComponent(l1).addComponent(l3))  
-              .addGroup(innerGl.createParallelGroup(TRAILING).addComponent(l2)));  
 
-      innerGl.setVerticalGroup(innerGl.createSequentialGroup()  
-              .addGroup(innerGl.createParallelGroup(BASELINE).addComponent(l1).addComponent(l2))  
-              .addGroup(innerGl.createParallelGroup(BASELINE).addComponent(l3)));
-      panel.add(box,gbc);
-      gbc.gridy = gbc.gridy + 1;
-    }
-  */
   
   private void showDialog(JPanel panel, String titel){
     JDialog dialog = new JDialog(this, titel, true);
+    dialog.setLocation(new Point(500, 500));
     dialog.getContentPane().add(panel);
     dialog.pack();
     dialog.setVisible(true);
