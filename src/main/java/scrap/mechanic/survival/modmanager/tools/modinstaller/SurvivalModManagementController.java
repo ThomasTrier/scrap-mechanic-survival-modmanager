@@ -9,7 +9,10 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.stream.Collectors;
 import org.apache.log4j.Logger;
+import scrap.mechanic.survival.modmanager.tools.CombineModController;
 import scrap.mechanic.survival.modmanager.tools.entities.Controller;
 import scrap.mechanic.survival.modmanager.tools.modinstaller.entity.Mod;
 
@@ -62,7 +65,46 @@ public class SurvivalModManagementController extends Controller {
     } else {
       LOGGER.warn("Could not update backupfiles. Installation stopped.");
     }
+  }
 
+  public boolean install(List<Mod> mods) {
+    /*
+    HowTo
+    #1- Filter already installed mods.
+    #2- Merge new with already installed
+    #3- Remove already installed files from merged mod
+    #4- Copy Modfiles
+     */
+    CombineModController combine = new CombineModController();
+    List<Mod> tmp = configController.getMods().stream().filter(Mod::isInstalled).collect(Collectors.toList());
+    tmp.addAll(mods);
+    Mod mod = combine.combine(tmp);
+    return true;
+  }
+
+  public boolean uninstall(List<Mod> mods) {
+    /*
+    HowTo
+    #1- Filter already installed mods.
+    #2- Remove mod from filtered list
+    #3- merge mods
+    #4- restore gamefiles
+    #4- Copy merged Modfiles
+     */
+    return true;
+  }
+
+  
+
+  private void mngTmp() {
+    File tmp = new File(configController.getPathToScrapToolFolder() + File.separator + "tmp" + File.separator);
+    if (tmp.exists()) {
+      try {
+        tmp.mkdir();
+      } catch (Exception ex) {
+        java.util.logging.Logger.getLogger(SurvivalModManagementController.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }
   }
 
   public List<Mod> findSurvivalMods(String sourcePath, String name) {
@@ -94,7 +136,7 @@ public class SurvivalModManagementController extends Controller {
     } else {
       return new ArrayList<>();
     }
-    
+
     return mods;
   }
 
@@ -119,11 +161,11 @@ public class SurvivalModManagementController extends Controller {
           while ((line = br.readLine()) != null) {
             if (line.contains("name")) {
               String name = line.split(":")[1].split("\"")[1].split("\"")[0];
-              System.err.println("name: " + name);
               return name;
             }
           }
         } catch (Exception ex) {
+          LOGGER.error("Problems while processing steam description file", ex);
         }
 
       }

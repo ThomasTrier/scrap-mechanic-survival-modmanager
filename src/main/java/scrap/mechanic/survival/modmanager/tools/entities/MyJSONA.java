@@ -1,21 +1,22 @@
-package scrap.mechanic.survival.modmanager.tools.entity;
+package scrap.mechanic.survival.modmanager.tools.entities;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MyJSONO extends JSONObject implements MyJSON{
+public class MyJSONA extends JSONArray implements MyJSON{
 
     private String primaryKey;
     
-    public MyJSONO(){
+    public MyJSONA(){
         super();
     }
     
-    public MyJSONO(String jsonstring, String primaryKey){
+    public MyJSONA(String jsonstring, String primaryKey){
         super(jsonstring);
         this.primaryKey = primaryKey;
     }
     
-    public MyJSONO(JSONObject o, String primaryKey){
+    public MyJSONA(JSONObject o, String primaryKey){
         super(o);
         this.primaryKey = primaryKey;
     }

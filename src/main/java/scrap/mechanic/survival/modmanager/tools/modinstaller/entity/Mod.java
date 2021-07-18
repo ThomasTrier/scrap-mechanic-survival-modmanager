@@ -14,11 +14,11 @@ public class Mod {
     private List<String> filePaths; //relativ to srap mechanics root dir
     private List<String> knownCompatibleMods;
 
-    public Mod(String sourcePath, String n) {
+    public Mod(String sourcePath, String name) {
         id = UUID.randomUUID().toString();
         this.sourcePath = sourcePath;
-        if(n != null){
-            this.name=n;
+        if(name != null){
+            this.name=name;
         }else{
             this.name = sourcePath.substring(sourcePath.lastIndexOf("\\"));
         }

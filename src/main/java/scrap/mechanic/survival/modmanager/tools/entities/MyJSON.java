@@ -1,5 +1,5 @@
 
-package scrap.mechanic.survival.modmanager.tools.entity;
+package scrap.mechanic.survival.modmanager.tools.entities;
 
 public interface MyJSON {
     public String getPrimaryKey();

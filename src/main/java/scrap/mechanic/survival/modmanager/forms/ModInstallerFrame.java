@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -205,9 +206,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jImagePanel_settingsLayout.createSequentialGroup()
         .addContainerGap(490, Short.MAX_VALUE)
         .addGroup(jImagePanel_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
-            .addComponent(jLabel1)
-            .addGap(306, 306, 306))
+          .addComponent(jLabel1)
           .addGroup(jImagePanel_settingsLayout.createSequentialGroup()
             .addComponent(jButton_ofd_pathtoscrapmechanic, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -296,7 +295,7 @@ public class ModInstallerFrame extends javax.swing.JFrame {
     jImagePanel_modinstaller.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 1255, -1));
 
     jButton_find_mods.setText("find mods");
-    jButton_find_mods.setToolTipText("adding new downloaded mod to known mod list");
+    jButton_find_mods.setToolTipText("adding downloaded mod to known mod list");
     jButton_find_mods.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton_find_modsActionPerformed(evt);
@@ -409,12 +408,13 @@ public class ModInstallerFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_jTabbedPaneStateChanged
 
   private void jButton_install_known_modActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_install_known_modActionPerformed
-    survivalModManagementController.installMod(jList_known_Mods.getSelectedValue());
+    survivalModManagementController.install(getSeletedKnownMods());
     updateView();
   }//GEN-LAST:event_jButton_install_known_modActionPerformed
 
   private void jButton_uninstall_modActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_uninstall_modActionPerformed
-     throw new UnsupportedOperationException("TODO");
+     survivalModManagementController.uninstall(getSeletedInstalledMods());
+     updateView();
   }//GEN-LAST:event_jButton_uninstall_modActionPerformed
 
   private void jButton_restore_gamefilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_restore_gamefilesActionPerformed
@@ -506,14 +506,21 @@ public class ModInstallerFrame extends javax.swing.JFrame {
   }
   
   public void addToKnownMods(Map<JCheckBox,Map<JTextField,Mod>> map){
-    System.err.println("addToKnownMods");
     map.forEach((k,v) -> {
-      Map<JTextField,Mod> m = ((Map<JTextField,Mod>)v);
-      JTextField jtf = m.keySet().iterator().next();
-      Mod mod = m.values().iterator().next();
-      JCheckBox cb = (JCheckBox)k;
-      System.err.println(mod.getName() + "  " + jtf.getText() + "   " + cb.isSelected());
+      JCheckBox cb = (JCheckBox)k;      
+      if(cb.isSelected()){
+        Map<JTextField,Mod> m = ((Map<JTextField,Mod>)v);
+        JTextField jtf = m.keySet().iterator().next();
+        Mod mod = m.values().iterator().next();
+        System.err.println(mod.getName() + "  " + jtf.getText() + "   " + cb.isSelected());
+        String name = jtf.getText();
+        if(name != null){
+          mod.setName(name);
+        }
+        survivalModManagementController.addSurvivalModsToList(mod);
+      }
     });
+    updateView();
   }
   
   private JPanel createfoundModsDialogPanel(List<Mod> mods){
@@ -611,7 +618,14 @@ public class ModInstallerFrame extends javax.swing.JFrame {
   public void setCurrentView(VIEW currentView) {
     this.currentView = currentView;
   }
+  
+  public List<Mod> getSeletedKnownMods(){
+    return configController.getMods().stream().filter(mod -> mod.getName() != null && jList_known_Mods.getSelectedValuesList().contains(mod.getName())).collect(Collectors.toList());
+  }
 
+  public List<Mod> getSeletedInstalledMods(){
+    return configController.getMods().stream().filter(mod -> mod.getName() != null && jList_installed_Mods.getSelectedValuesList().contains(mod.getName())).collect(Collectors.toList());
+  }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton7;

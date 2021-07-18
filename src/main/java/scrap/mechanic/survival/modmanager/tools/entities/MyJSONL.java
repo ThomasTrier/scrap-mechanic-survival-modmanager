@@ -1,4 +1,4 @@
-package scrap.mechanic.survival.modmanager.tools.entity;
+package scrap.mechanic.survival.modmanager.tools.entities;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import scrap.mechanic.survival.modmanager.tools.entity.MyJSON;
-import scrap.mechanic.survival.modmanager.tools.entity.MyJSONA;
-import scrap.mechanic.survival.modmanager.tools.entity.MyJSONL;
-import scrap.mechanic.survival.modmanager.tools.entity.MyJSONO;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import scrap.mechanic.survival.modmanager.tools.entities.MyJSON;
+import scrap.mechanic.survival.modmanager.tools.entities.MyJSONA;
+import scrap.mechanic.survival.modmanager.tools.entities.MyJSONL;
+import scrap.mechanic.survival.modmanager.tools.entities.MyJSONO;
 
 public class JSONController {
 
